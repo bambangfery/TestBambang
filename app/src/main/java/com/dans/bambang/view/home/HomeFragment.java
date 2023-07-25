@@ -62,6 +62,30 @@ public class HomeFragment extends Fragment implements HomePresenter.View {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        initView();
+        declareSwipeRefreshLayout();
+        presenter = new HomePresenter(this);
+        presenter.getJobList("","",false);
+        binding.show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.show.setVisibility(View.GONE);
+                binding.hide.setVisibility(View.VISIBLE);
+                binding.lyFilter.setVisibility(View.VISIBLE);
+            }
+        });
+
+        binding.hide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.show.setVisibility(View.VISIBLE);
+                binding.hide.setVisibility(View.GONE);
+                binding.lyFilter.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void initView(){
         binding.rvList.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         binding.rvList.setLayoutManager(layoutManager);
@@ -69,10 +93,6 @@ public class HomeFragment extends Fragment implements HomePresenter.View {
         binding.swipeRefresh.setHeaderView(createHeaderView());
         binding.swipeRefresh.setFooterView(createFooterView());
         binding.swipeRefresh.setTargetScrollWithLayout(true);
-        declareSwipeRefreshLayout();
-        presenter = new HomePresenter(this);
-        presenter.getJobList("","",false);
-
     }
 
     private View createHeaderView() {

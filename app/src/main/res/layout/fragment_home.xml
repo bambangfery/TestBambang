@@ -6,34 +6,132 @@
     tools:context=".view.home.HomeFragment"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/ly_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:background="@color/white"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:gravity="center">
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="35dp"
-            android:src="@drawable/logo_home"
-            android:scaleType="fitXY"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JOB LIST"
+            android:padding="4dp"
+            android:gravity="center"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:weightSum="2"
+            android:layout_marginBottom="8dp"
+            android:gravity="center">
 
-        <ImageView
-            android:id="@+id/searchCoupon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_centerInParent="true"
-            android:layout_alignParentRight="true"/>
+            <SearchView
+                android:id="@+id/searchView1"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="1.8"
+                android:focusable="false"
+                android:background="@drawable/bg_border_rounded"
+                android:theme="@style/SearchViewTheme"
+                android:layout_marginLeft="12dp"
+                android:textColorHint="@color/grey70"
+                android:layout_centerVertical="true"/>
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/show"
+                android:layout_weight="0.2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_expand_show"
+                android:scaleType="fitXY"
+                android:visibility="visible"/>
+
+            <ImageView
+                android:id="@+id/hide"
+                android:layout_weight="0.2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_expand_hide"
+                android:scaleType="fitXY"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="12dp"
+            android:orientation="vertical"
+            android:background="@drawable/bg_border_square"
+            android:weightSum="2"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="FULL TIME"
+                    android:padding="4dp"
+                    android:gravity="left"/>
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Location"
+                    android:padding="4dp"
+                    android:gravity="left"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border_square"
+                    android:layout_weight="1.5"
+                    android:gravity="right"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Apply Filter"
+                android:textSize="12sp"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
     <com.dans.bambang.utils.SwipeRefreshLayout
